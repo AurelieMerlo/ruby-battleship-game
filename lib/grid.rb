@@ -67,7 +67,7 @@ class Grid
 
         while ships.size > 0
             ships_name = ships.keys
-            starting_position = [1, 0]
+            starting_position = [1, 0] # improvement: position could be represented by a class named Position or Coordinates for ex
             is_horizontal = is_horizontal?(ships_name[0].to_s)
 
             while true
