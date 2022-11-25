@@ -66,15 +66,16 @@ class Grid
         puts create_board(default_player.grid.board)
 
         while ships.size > 0
+            ships_name = ships.keys
             starting_position = [1, 0]
-            is_horizontal = is_horizontal?(ships[0])
+            is_horizontal = is_horizontal?(ships_name[0].to_s)
 
             while true
                 puts "Creating #{player.name}'s board"
 
                 default_player.grid.board = player.grid.board
 
-                default_player.put_ship_on_board(ships[0], is_horizontal, starting_position, true)
+                default_player.put_ship_on_board(ships_name[0].to_s, is_horizontal, starting_position, true)
 
                 puts create_board(default_player.grid.board)
 
@@ -83,9 +84,9 @@ class Grid
                 move_ship = STDIN.getch # toLowerCase()
 
                 if MOVEMENT_KEYS.include? move_ship
-                    starting_position = move_ship_on_board(is_horizontal, starting_position, ships[0], move_ship)
+                    starting_position = move_ship_on_board(is_horizontal, starting_position, ships_name[0].to_s, move_ship)
                 elsif move_ship == 'p'
-                    player.put_ship_on_board(ships[0], is_horizontal, starting_position, false)
+                    player.put_ship_on_board(ships_name[0].to_s, is_horizontal, starting_position, false)
                     ships.shift
                     break
                 elsif move_ship =='q'
@@ -98,7 +99,7 @@ class Grid
     end
 
     def move_ship_on_board(is_horizontal, position, ship_type, move_ship)
-        ship_length = Ship::SHIPS_LENGTHS[:ship_type]
+        ship_length = Ship::SHIPS[ship_type.to_sym].length
 
         @board = Array.new(DEFAULT_GRID_WIDTH) { Array.new(DEFAULT_GRID_LENGTH, DEFAULT_EMPTY) }
 

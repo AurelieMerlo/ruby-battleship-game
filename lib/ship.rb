@@ -2,9 +2,11 @@ require_relative 'square'
 
 class Ship
 
-    SHIPS = ['Titanic', 'Submarine']
-    SHIP_SIGNS = ['T', 'S']
-    SHIPS_LENGTHS = { 'Submarine': 2, 'Titanic': 3 }
+    SHIPS = { 
+        'Submarine': { sign: 'S', length: 2 },
+        'Titanic': { sign: 'T', length: 3 }
+    }
+    SHIP_SIGNS = SHIPS.each {|key, value| key[0] }
 
     ROW_INDEX = 0
     LINE_INDEX = 1
