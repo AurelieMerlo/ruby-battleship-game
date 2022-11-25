@@ -5,7 +5,7 @@ require_relative 'ship'
 class Game
 
     def initialize(first_player_name, second_player_name)
-        @first_player_board = Grid.new()
+        @first_player_board = Grid.new() # improvement: we could have specific classes OpponentGrid / PlayerGrid, inherited by a Grid class
         @second_player_board = Grid.new()
         @first_player = Player.new(first_player_name, true, first_player_board, second_player_board)
         @second_player = Player.new(second_player_name, true, second_player_board, first_player_board)

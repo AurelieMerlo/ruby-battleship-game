@@ -1,7 +1,8 @@
 require_relative 'square'
 
 class Ship
-
+    
+    # improvement: each ship could be a specific class child of parent class Ship
     SHIPS = { 
         'Submarine': { sign: 'S', length: 2 },
         'Titanic': { sign: 'T', length: 3 }
