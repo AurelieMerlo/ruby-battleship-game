@@ -30,11 +30,16 @@ class Grid
         new_board = Terminal::Table.new()
         new_board.add_row(COLUMN_NAMES)
 
-        board_to_print.each do |row|
-            row[0] = ROW_NAMES[0]
-            new_board.add_row(row)
-            new_board.add_separator
-            ROW_NAMES.shift
+        row_names_length = ROW_NAMES.length
+        i = 0
+
+        while i < row_names_length
+            board_to_print.each do |row|
+                row[0] = ROW_NAMES[i]
+                new_board.add_row(row)
+                new_board.add_separator
+                i += 1
+            end
         end
 
         new_board
